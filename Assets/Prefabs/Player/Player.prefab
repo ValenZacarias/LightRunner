@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389863977993847730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2894160820257928474}
-  - component: {fileID: 4118005556711735878}
+  - component: {fileID: 7371722516376233718}
   - component: {fileID: 2759412494901473291}
   - component: {fileID: 2235598605477050504}
   m_Layer: 0
@@ -256,7 +256,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4118005556711735878
+--- !u!114 &7371722516376233718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4105828983030562627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31cd827e3f724004290431286b134cdd, type: 3}
+  m_Script: {fileID: 11500000, guid: b16a76b40e0ee9e438ce8c7dc90559c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _characterBounds:
@@ -276,7 +276,7 @@ MonoBehaviour:
     m_Bits: 8
   _detectorCount: 3
   _detectionRayLength: 0.16
-  _rayBuffer: 0.149
+  _rayBuffer: 0.1
   _acceleration: 100
   _moveClamp: 13
   _deAcceleration: 80
