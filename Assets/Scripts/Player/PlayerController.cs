@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         CalculateDash();
 
         MoveCharacter(); // Actually perform the axis movement
+        UpdateAnimator(); // Set animation parameters
     }
 
 
@@ -400,4 +401,33 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+
+    #region Animation
+
+    [Header("ANIMATION")]
+    // [SerializeField, Tooltip("Raising this value increases collision accuracy at the cost of performance.")]
+    public Animator animator;
+    private void UpdateAnimator()
+    {
+        // Flip the sprite
+        // if (Input.X != 0) transform.localScale = new Vector3(Input.X > 0 ? 1 : -1, 1, 1);
+
+        // Debug.Log( _currentVerticalSpeed );     
+        animator.SetFloat("Speed_x", Mathf.Abs(_currentHorizontalSpeed));
+        // animator.SetFloat("Speed_y", _currentVerticalSpeed);
+        if(_currentVerticalSpeed > 0){
+            animator.SetBool("Jumping", true);
+            animator.SetBool("Falling", false);
+        } else if(_currentVerticalSpeed < 0){
+            animator.SetBool("Jumping", false);
+            animator.SetBool("Falling", true);
+        }else{
+            animator.SetBool("Jumping", false);
+            animator.SetBool("Falling", false);
+        }
+
+    }
+    #endregion
+
+    
 }
