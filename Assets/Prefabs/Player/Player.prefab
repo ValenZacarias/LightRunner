@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3086204854567767158}
   - component: {fileID: 4519094998935164133}
-  - component: {fileID: 8992326762431705268}
+  - component: {fileID: 6317989683938244694}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389863977993847730}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.069, y: 0.231, z: -1.3711088}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 0.08, y: 0.2678, z: -1.3711088}
+  m_LocalScale: {x: 5.3692255, y: 5.3692255, z: 5.3692255}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2239353243359012284}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8992326762431705268
+--- !u!95 &6317989683938244694
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6906150455019569743
 Transform:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798144646942468992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -276,7 +276,7 @@ Transform:
   - {fileID: 2239353243359012284}
   - {fileID: 6906150455019569743}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7371722516376233718
 MonoBehaviour:
@@ -290,14 +290,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16a76b40e0ee9e438ce8c7dc90559c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  inputVector: {x: 0, y: 0}
+  useNewInputSystem: 0
   _characterBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.59, z: 0.5}
+    m_Center: {x: 0, y: -0.25, z: 0}
+    m_Extent: {x: 0.5, y: 0.6, z: 0.5}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
   _detectorCount: 3
-  _detectionRayLength: 0.16
+  _detectionRayLength: 0.15
   _rayBuffer: 0.1
   _acceleration: 100
   _moveClamp: 13
@@ -308,20 +311,48 @@ MonoBehaviour:
   _maxFallSpeed: 120
   _jumpHeight: 23
   _jumpApexThreshold: 10
-  _coyoteTimeThreshold: 0.1
+  _coyoteTimeThreshold: 0.15
   _jumpBuffer: 0.1
   _jumpEndEarlyGravityModifier: 3
-  _dashSpeed: 1
+  _dashSpeed: 50
   _CanDash: 1
   dashCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0083351135
+      value: 0.4009323
+      inSlope: 0.16287284
+      outSlope: 0.16287284
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.9543708
+    - serializedVersion: 3
+      time: 0.3187093
+      value: 1.0012635
+      inSlope: 0.009264649
+      outSlope: 0.009264649
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.46983954
+    - serializedVersion: 3
+      time: 0.9916687
+      value: -0.0023460388
+      inSlope: -0.26120028
+      outSlope: -0.26120028
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.47270057
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dashTotalTime: 0.5
+  dashTotalTime: 0.2
+  dashCooldown: 1
   _freeColliderIterations: 10
-  animator: {fileID: 8992326762431705268}
+  animator: {fileID: 6317989683938244694}
 --- !u!61 &2759412494901473291
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -357,10 +388,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.33, y: 0.32}
+    newSize: {x: 0.33, y: 0.32}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -403,7 +434,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2239353243359012284}
-  - component: {fileID: 1696434942267362379}
   m_Layer: 0
   m_Name: SpriteContainer
   m_TagString: Untagged
@@ -420,36 +450,10 @@ Transform:
   m_GameObject: {fileID: 8240430168566557964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4999999, y: 1.4999999, z: 1.4999999}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3086204854567767158}
   m_Father: {fileID: 2894160820257928474}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1696434942267362379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8240430168566557964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b75adb0b2ed0194aaa1c60ce9152ed0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _anim: {fileID: 8992326762431705268}
-  _source: {fileID: 0}
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  _jumpParticles: {fileID: 0}
-  _launchParticles: {fileID: 0}
-  _moveParticles: {fileID: 0}
-  _landParticles: {fileID: 0}
-  _footsteps: []
-  _maxTilt: 0.1
-  _tiltSpeed: 1
-  _maxIdleSpeed: 2
-  _maxParticleFallSpeed: -40

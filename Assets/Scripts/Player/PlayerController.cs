@@ -445,8 +445,10 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     private void UpdateAnimator()
     {
-        // Flip the sprite
-        // if (Input.X != 0) transform.localScale = new Vector3(Input.X > 0 ? 1 : -1, 1, 1);
+        // Flip the sprite 
+        // Esto no muy recomendable, no deberiamos tocar el transform del game object, habria que flipear el sprite desde el sprite component
+        // Por ahora ta bien, pero despues es algo a refactorizar
+        if (Input.X != 0) transform.localScale = new Vector3(Input.X > 0 ? 1 : -1, 1, 1); 
 
         // Debug.Log( _currentVerticalSpeed );     
         animator.SetFloat("Speed_x", Mathf.Abs(_currentHorizontalSpeed));
