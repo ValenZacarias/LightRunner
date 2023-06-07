@@ -1111,6 +1111,68 @@ Transform:
   m_Father: {fileID: 2104366988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &668249631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 668249633}
+  - component: {fileID: 668249632}
+  m_Layer: 0
+  m_Name: PlayerInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &668249632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668249631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0e7153b4dde744d9f89d95c6209583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DashInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  JumpInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+--- !u!4 &668249633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668249631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1037811902}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &775836902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1558,6 +1620,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1052933877}
+  - {fileID: 668249633}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3250,12 +3313,24 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 668249632}
+    - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
       propertyPath: dashTotalTime
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: _detectionRayLength
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
       propertyPath: dashBreakCoeficient
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: _coyoteTimeThreshold
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
       propertyPath: _freeColliderIterations

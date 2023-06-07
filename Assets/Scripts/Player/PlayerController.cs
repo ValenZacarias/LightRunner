@@ -42,6 +42,12 @@ public class PlayerController : MonoBehaviour
     void Awake() => Invoke(nameof(Activate), 0.5f);
     void Activate() => _active = true;
 
+    private void Start()
+    {
+        playerInput.OnJumpAction += PlayerInput_OnJumpAction;
+        playerInput.OnDashAction += PlayerInput_OnDashAction;
+    }
+
     private void Update()
     {
         if (!_active) return;
@@ -49,7 +55,10 @@ public class PlayerController : MonoBehaviour
         Velocity = (transform.position - _lastPosition) / Time.deltaTime;
         _lastPosition = transform.position;
 
-        GatherInput();
+        if(useNewInputSystem) GatherInputNew();
+        else GatherInput();
+        
+        
         RunCollisionChecks();
 
         CalculateWalk(); // Horizontal movement
@@ -63,9 +72,13 @@ public class PlayerController : MonoBehaviour
 
 
     #region Gather Input
-
+    [Header("INPUT")] [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private Vector2 inputVector;
+    [SerializeField] private bool useNewInputSystem = false;
     private void GatherInput()
     {
+        //inputVector = playerInput.GetMovementVectorNormalized();
+
         Input = new FrameInput
         {
             X = UnityEngine.Input.GetAxisRaw("Horizontal"),
@@ -74,13 +87,47 @@ public class PlayerController : MonoBehaviour
             JumpDown = UnityEngine.Input.GetKeyDown(KeyCode.Z),
             JumpUp = UnityEngine.Input.GetKeyUp(KeyCode.Z),
 
-            DashDown = UnityEngine.Input.GetKeyDown(KeyCode.X),
-            DashUp = UnityEngine.Input.GetKeyUp(KeyCode.X)
+            //DashDown = UnityEngine.Input.GetKeyDown(KeyCode.X),
+            //DashUp = UnityEngine.Input.GetKeyUp(KeyCode.X)
         };
+        
         if (Input.JumpDown)
         {
             _lastJumpPressed = Time.time;
         }
+
+        if (UnityEngine.Input.GetKeyDown(KeyCode.X))
+        {
+            startDash = true;
+        }
+
+    }
+
+    // NEW INPUT SYSTEM
+    private void PlayerInput_OnJumpAction(object sender, System.EventArgs e)
+    {
+        Debug.Log("PLAYER INPUT -> JUMP");
+        if(useNewInputSystem) _lastJumpPressed = Time.time;
+    }
+
+    private void PlayerInput_OnDashAction(object sender, System.EventArgs e)
+    {
+        //Debug.Log("PLAYER INPUT -> DASH");
+        if (useNewInputSystem) startDash = true;
+    }
+
+    private void GatherInputNew()
+    {
+        inputVector = playerInput.GetMovementVectorNormalized();
+
+        Input = new FrameInput
+        {
+            X = inputVector.x,
+            Y = inputVector.y,
+
+            JumpDown = playerInput.JumpInputDown,
+            JumpUp = playerInput.JumpInputUp,
+        };
     }
 
     #endregion
@@ -310,37 +357,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashTotalTime = 0.5f;
     private Vector2 dir = new Vector2(0.0f, 0.0f);
     private float dashTime = 0.0f;
+    private bool startDash;
+    [SerializeField] private float dashCooldown = 1.0f;
     private void CalculateDash()
     {
-        // Jump if: grounded or within coyote threshold || sufficient jump buffer
-        //if (Input.DashDown && _CanDash)
-        if (Input.DashDown && dashTime <= 0.0f)
+
+        if (startDash && dashTime <= 0.0f)
         {
             dir = new Vector2(Input.X, Input.Y);
-            Debug.Log(1 - dashTime / dashTotalTime);
+            //Debug.Log(1 - dashTime / dashTotalTime);
             _currentHorizontalSpeed = dir.normalized.x * _dashSpeed * dashCurve.Evaluate( 1 - dashTime / dashTotalTime) ;
             _currentVerticalSpeed = dir.normalized.y * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             dashTime = dashTotalTime;
-            //_CanDash = false;
+            startDash = false;
         }
         else if(dashTime > 0.0f)
         {
-            Debug.Log(1 - dashTime / dashTotalTime);
+            //Debug.Log(1 - dashTime / dashTotalTime);
             _currentHorizontalSpeed = dir.normalized.x * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             _currentVerticalSpeed = dir.normalized.y * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             dashTime -= Time.deltaTime;
-        }
-
-        // End the jump early if button released
-        if (!_colDown && Input.JumpUp && !_endedJumpEarly && Velocity.y > 0)
-        {
-            // _currentVerticalSpeed = 0;
-            //_endedJumpEarly = true;
-        }
-
-        if (_colUp)
-        {
-            //if (_currentVerticalSpeed > 0) _currentVerticalSpeed = 0;
         }
     }
 
