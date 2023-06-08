@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3086204854567767158}
   - component: {fileID: 4519094998935164133}
-  - component: {fileID: 6317989683938244694}
+  - component: {fileID: 7766201276963251518}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389863977993847730}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 0.2678, z: -1.3711088}
-  m_LocalScale: {x: 5.3692255, y: 5.3692255, z: 5.3692255}
+  m_LocalPosition: {x: 0.07, y: 0.393, z: -1.3711088}
+  m_LocalScale: {x: 7.789672, y: 7.789672, z: 7.789672}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2239353243359012284}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6317989683938244694
+--- !u!95 &7766201276963251518
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -276,7 +276,7 @@ Transform:
   - {fileID: 2239353243359012284}
   - {fileID: 6906150455019569743}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7371722516376233718
 MonoBehaviour:
@@ -294,8 +294,8 @@ MonoBehaviour:
   inputVector: {x: 0, y: 0}
   useNewInputSystem: 0
   _characterBounds:
-    m_Center: {x: 0, y: -0.25, z: 0}
-    m_Extent: {x: 0.5, y: 0.6, z: 0.5}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 0.83, z: 0.5}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -352,7 +352,7 @@ MonoBehaviour:
   dashTotalTime: 0.2
   dashCooldown: 1
   _freeColliderIterations: 10
-  animator: {fileID: 6317989683938244694}
+  animator: {fileID: 7766201276963251518}
 --- !u!61 &2759412494901473291
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -434,6 +434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2239353243359012284}
+  - component: {fileID: 5610732585906071715}
   m_Layer: 0
   m_Name: SpriteContainer
   m_TagString: Untagged
@@ -450,10 +451,22 @@ Transform:
   m_GameObject: {fileID: 8240430168566557964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4999999, y: 1.4999999, z: 1.4999999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3086204854567767158}
   m_Father: {fileID: 2894160820257928474}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5610732585906071715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8240430168566557964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5988410b478ee8e4c8d71abb84d6c996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
