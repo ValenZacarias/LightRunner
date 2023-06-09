@@ -452,16 +452,31 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("Speed_x", Mathf.Abs(_currentHorizontalSpeed));
         
+
+        // Lo mejor aca seria trabajarlo con un Speed_y y hacer las comparaciones directamente en las transiciones del animator
         if(_currentVerticalSpeed > 0){
             animator.SetBool("Jumping", true);
             animator.SetBool("Falling", false);
-        } else if(_currentVerticalSpeed < 0){
+        } 
+        else if(_currentVerticalSpeed < 0){
             animator.SetBool("Jumping", false);
             animator.SetBool("Falling", true);
-        }else{
+        }
+        else
+        {
             animator.SetBool("Jumping", false);
             animator.SetBool("Falling", false);
         }
+
+        if(_colDown)
+        {
+            animator.SetBool("IsGrounded", true);
+        }
+        else
+        {
+            animator.SetBool("IsGrounded", false);
+        }
+            
 
     }
     #endregion

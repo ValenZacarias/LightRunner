@@ -276,7 +276,7 @@ Transform:
   - {fileID: 2239353243359012284}
   - {fileID: 6906150455019569743}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7371722516376233718
 MonoBehaviour:
@@ -309,7 +309,7 @@ MonoBehaviour:
   _fallClamp: -40
   _minFallSpeed: 80
   _maxFallSpeed: 120
-  _jumpHeight: 23
+  _jumpHeight: 25
   _jumpApexThreshold: 10
   _coyoteTimeThreshold: 0.15
   _jumpBuffer: 0.1
@@ -471,5 +471,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 7766201276963251518}
-  _maxTilt: 30
-  _tiltSpeed: 500
