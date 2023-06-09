@@ -6,7 +6,8 @@ using UnityEngine;
 public class LightPickup : MonoBehaviour
 {
     private SpriteRenderer sprite;
-    private bool isOn = true;
+    public bool isOn = true;
+    public bool useTimer = false;
     public event Action TurnedOff;
     public event Action TurnedOn;
 
@@ -23,21 +24,21 @@ public class LightPickup : MonoBehaviour
        }
     }
 
-    private void TryTurnOff()
+    public void TryTurnOff()
     {
         if(isOn)
         {
-            //Debug.Log("LIGHT OFF");
             sprite.color = Color.gray;
             TurnedOff?.Invoke();
-            StartCoroutine("testTurnOnTimer");
+
+            if(useTimer) StartCoroutine("testTurnOnTimer");
 
             isOn = false;
         }
         
     }
 
-    private void TurnOn()
+    public void TurnOn()
     {
         //Debug.Log("LIGHT ON");
         sprite.color = Color.yellow;
@@ -56,5 +57,15 @@ public class LightPickup : MonoBehaviour
         //Debug.Log("Starting timer");
         yield return new WaitForSeconds(6.2f);
         TurnOn();
+    }
+
+    private void OnDrawGizmos()
+    {
+
+        if(!isOn)
+        {
+            Gizmos.color = Color.gray;
+            Gizmos.DrawSphere(transform.position, 0.5f);
+        }
     }
 }
