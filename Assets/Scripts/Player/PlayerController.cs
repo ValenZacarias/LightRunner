@@ -155,11 +155,16 @@ public class PlayerController : MonoBehaviour
         // Ground
         LandingThisFrame = false;
         var groundedCheck = RunDetection(_raysDown);
-        if (_colDown && !groundedCheck) _timeLeftGrounded = Time.time; // Only trigger when first leaving
+        if (_colDown && !groundedCheck)
+        {
+            _timeLeftGrounded = Time.time; // Only trigger when first leaving
+
+        }
         else if (!_colDown && groundedCheck)
         {
             _coyoteUsable = true; // Only trigger when first touching
             LandingThisFrame = true;
+            Debug.Log("LANDED!");
         }
 
         _colDown = groundedCheck;
