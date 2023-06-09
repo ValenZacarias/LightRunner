@@ -2,6 +2,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class PlayerAnimator : MonoBehaviour {
+    [SerializeField] private Animator _anim;    
 
     private PlayerController _player;
 
@@ -13,6 +14,20 @@ public class PlayerAnimator : MonoBehaviour {
         // Flip the sprite
         if (_player.Input.X != 0) transform.localScale = new Vector3(_player.Input.X > 0 ? 1 : -1, 1, 1);
 
+        // Splat
+        if (_player.LandingThisFrame) {
+            _anim.SetTrigger(GroundedKey);
+            // _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
+        }
+
     }
+    
+    #region Animation Keys
+
+    private static readonly int GroundedKey = Animator.StringToHash("Grounded");
+    // private static readonly int IdleSpeedKey = Animator.StringToHash("IdleSpeed");
+    // private static readonly int JumpKey = Animator.StringToHash("Jump");
+
+    #endregion
 
 }
