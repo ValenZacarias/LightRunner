@@ -3,6 +3,7 @@ using Random = UnityEngine.Random;
 
 public class PlayerAnimator : MonoBehaviour {
     [SerializeField] private Animator _anim;    
+    [SerializeField] private ParticleSystem _trailParticles;       
 
     private PlayerController _player;
     private SpriteRenderer _spriteRenderer;
@@ -20,6 +21,9 @@ public class PlayerAnimator : MonoBehaviour {
             _spriteRenderer.flipX = _player.Input.X < 0 ? true : false;
         }
 
+        if(_player.isDashing){
+            _trailParticles.Play();
+        }
 
         //if (_player == null) return;
 
