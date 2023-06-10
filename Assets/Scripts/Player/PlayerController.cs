@@ -497,7 +497,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsGrounded", false);
         }
 
-        spriteRenderer.color = _canDash ? Color.red : Color.white;
+        spriteRenderer.color = _canDash ? dashColor : Color.white;
 
     }
     #endregion
