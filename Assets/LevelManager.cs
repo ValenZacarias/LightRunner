@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public Transform PlayerStart;
     private GameObject[] PickLightsGO;
+    private GameObject Player;
     private List<LightPickup> PickLights = new List<LightPickup>();
 
     private int totalPickLights;
@@ -12,9 +14,10 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         PickLightsGO = GameObject.FindGameObjectsWithTag("PickLight");
 
-        for(int i = 0; i < PickLightsGO.Length; i++)
+        for (int i = 0; i < PickLightsGO.Length; i++)
         {
             PickLightsGO[i].GetComponent<LightPickup>().TurnedOff += OnPickLightTurnedOff;
             PickLightsGO[i].GetComponent<LightPickup>().TurnedOn += OnPickLightTurnedOn;
@@ -28,7 +31,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.R)) RestartLevel();
     }
 
     public int GetLitPickLights()
@@ -46,6 +49,10 @@ public class LevelManager : MonoBehaviour
     {
         ++unlitPickLights;
         Debug.Log("[LevelManager] LIGHT TURNED OFF");
+        if(unlitPickLights == totalPickLights)
+        {
+            FinishLevel();
+        }
         UpdateHUD();
     }
     private void OnPickLightTurnedOn()
@@ -53,6 +60,24 @@ public class LevelManager : MonoBehaviour
         --unlitPickLights;
         Debug.Log("[LevelManager] LIGHT TURNED ON");
         UpdateHUD();
+    }
+
+    private void FinishLevel()
+    {
+
+        HUD.Win();
+    }
+
+    private void RestartLevel()
+    {
+        unlitPickLights = PickLights.Count;
+        UpdateHUD();
+        Player.transform.position = PlayerStart.position;
+        foreach (LightPickup light in PickLights)
+        {
+            light.TurnOn();
+        }
+        HUD.Restart();
     }
 
     #region UI

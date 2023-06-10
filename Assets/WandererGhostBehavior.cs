@@ -7,7 +7,8 @@ enum GhostState
 {
     WANDERING,
     LIGHTUP,
-    RETURNING
+    RETURNING,
+    STOP
 }
 
 public class WandererGhostBehavior : MonoBehaviour
@@ -25,6 +26,7 @@ public class WandererGhostBehavior : MonoBehaviour
     private Vector3 targetLightPosition;
     private LightPickup targetLight;
     private bool canLight = false;
+
 
     void Start()
     {
@@ -55,6 +57,12 @@ public class WandererGhostBehavior : MonoBehaviour
                 currentState = GhostState.WANDERING;
             }
         }
+
+        if(currentState == GhostState.RETURNING)
+        {
+            transform.position = transform.position;
+            return;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -75,6 +83,23 @@ public class WandererGhostBehavior : MonoBehaviour
         }
     }
 
+    IEnumerator TurnOnTimer()
+    {
+        yield return new WaitForSeconds(turningOnDelay);
+        if (canLight)
+        {
+            targetLight.TurnOn();
+            currentState = GhostState.RETURNING;
+            canLight = false;
+        }
+    }
+
+    public void Stop()
+    {
+        currentState = GhostState.STOP;
+        route.Pause();
+    }
+
     private void OnDrawGizmos()
     {
         if(lastRoutePosition != null)
@@ -84,16 +109,7 @@ public class WandererGhostBehavior : MonoBehaviour
         }
         
     }
-    IEnumerator TurnOnTimer()
-    {
-        yield return new WaitForSeconds(turningOnDelay);
-        if(canLight)
-        {
-            targetLight.TurnOn();
-            currentState = GhostState.RETURNING;
-            canLight = false;
-        }
-    }
+
 
 
 }

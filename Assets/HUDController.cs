@@ -5,6 +5,7 @@ using TMPro;
 
 public class HUDController : MonoBehaviour
 {
+    [SerializeField] private GameObject WinPanel;
     [SerializeField] private TMP_Text LightsCounter;
 
     void Start()
@@ -15,6 +16,16 @@ public class HUDController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Win()
+    {
+        WinPanel.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        WinPanel.SetActive(false);
     }
 
     public void UpdateText_LightsCounter(string newText)

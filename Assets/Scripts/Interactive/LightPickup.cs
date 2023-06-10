@@ -6,14 +6,23 @@ using UnityEngine;
 public class LightPickup : MonoBehaviour
 {
     private SpriteRenderer sprite;
+    private ParticleSystem ps;
+
+    public GameObject LitVisual;
+    public GameObject UnlitVisual;
+
     public bool isOn = true;
     public bool useTimer = false;
     public event Action TurnedOff;
     public event Action TurnedOn;
 
+    
     private void Start()
     {
-        sprite = GetComponentInChildren<SpriteRenderer>();    
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        //ps = GetComponentInChildren<ParticleSystem>();
+        sprite.material.SetFloat("_TimeOffset", UnityEngine.Random.RandomRange(0.0f, 10.0f));
+        //ps.Play();
     }
 
     public void TryTurnOff()
@@ -25,6 +34,9 @@ public class LightPickup : MonoBehaviour
 
             if(useTimer) StartCoroutine("testTurnOnTimer");
 
+            LitVisual.SetActive(false);
+            UnlitVisual.SetActive(true);
+
             isOn = false;
         }
         
@@ -34,9 +46,13 @@ public class LightPickup : MonoBehaviour
     {
         //Debug.Log("LIGHT ON");
         sprite.color = Color.yellow;
-        isOn = true;
 
         TurnedOn?.Invoke();
+
+        LitVisual.SetActive(true);
+        UnlitVisual.SetActive(false);
+
+        isOn = true;
     }
 
     public bool GetState()

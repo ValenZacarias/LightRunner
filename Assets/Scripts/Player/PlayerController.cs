@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
         playerInput.OnJumpAction += PlayerInput_OnJumpAction;
         playerInput.OnDashAction += PlayerInput_OnDashAction;
     }
@@ -464,6 +466,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("ANIMATION")]
     public Animator animator;
+    public SpriteRenderer spriteRenderer;
+    public Color dashColor;
     private void UpdateAnimator()
     {
 
@@ -492,7 +496,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("IsGrounded", false);
         }
-            
+
+        spriteRenderer.color = _canDash ? Color.red : Color.white;
 
     }
     #endregion
