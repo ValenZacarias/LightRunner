@@ -294,8 +294,8 @@ MonoBehaviour:
   inputVector: {x: 0, y: 0}
   useNewInputSystem: 0
   _characterBounds:
-    m_Center: {x: 0, y: 0.15, z: 0}
-    m_Extent: {x: 0.5, y: 1, z: 0.5}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 0.85, z: 0.5}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -476,8 +476,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _anim: {fileID: 7766201276963251518}
   _trailParticles: {fileID: 6214560713236270643}
-  _maxTilt: 0.1
-  _tiltSpeed: 1
 --- !u!198 &6214560713236270643
 ParticleSystem:
   m_ObjectHideFlags: 0
