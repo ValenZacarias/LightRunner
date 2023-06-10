@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1917438627998463476, guid: d00dada989a8ac34b84679e45ef749eb, type: 3}
       propertyPath: isOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1917438627998463476, guid: d00dada989a8ac34b84679e45ef749eb, type: 3}
       propertyPath: useTimer
@@ -994,6 +994,18 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2239353243359012284, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239353243359012284, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2239353243359012284, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2894160820257928474, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1039,8 +1051,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3086204854567767158, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3086204854567767158, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3086204854567767158, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3086204854567767158, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.102
+      objectReference: {fileID: 0}
+    - target: {fileID: 3086204854567767158, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4105828983030562627, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
       propertyPath: m_Name
@@ -1050,6 +1078,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e2f19a62f5c2af9458d257df18b5ebb3, type: 3}
+    - target: {fileID: 5610732585906071715, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: _canDash
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
       propertyPath: _dashSpeed
       value: 40
@@ -1087,8 +1123,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+      propertyPath: _characterBounds.m_Center.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
       propertyPath: _characterBounds.m_Extent.y
-      value: 0.63
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7371722516376233718, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
       propertyPath: dashCurve.m_Curve.Array.data[1].time
@@ -1307,7 +1347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1917438627998463476, guid: d00dada989a8ac34b84679e45ef749eb, type: 3}
       propertyPath: isOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1917438627998463476, guid: d00dada989a8ac34b84679e45ef749eb, type: 3}
       propertyPath: useTimer
@@ -1316,6 +1356,14 @@ PrefabInstance:
     - target: {fileID: 3517195281024916578, guid: d00dada989a8ac34b84679e45ef749eb, type: 3}
       propertyPath: m_Name
       value: PickLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002307123842527530, guid: d00dada989a8ac34b84679e45ef749eb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002307123842527530, guid: d00dada989a8ac34b84679e45ef749eb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1670,7 +1718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1917438627998463476, guid: d00dada989a8ac34b84679e45ef749eb, type: 3}
       propertyPath: isOn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1917438627998463476, guid: d00dada989a8ac34b84679e45ef749eb, type: 3}
       propertyPath: useTimer
@@ -2154,7 +2202,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 0}
+  m_BackGroundColor: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

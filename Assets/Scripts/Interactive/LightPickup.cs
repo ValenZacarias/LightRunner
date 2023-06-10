@@ -16,14 +16,6 @@ public class LightPickup : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();    
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Player"))
-       {
-            TryTurnOff();
-       }
-    }
-
     public void TryTurnOff()
     {
         if(isOn)

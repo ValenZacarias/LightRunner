@@ -101,13 +101,17 @@ public class PlayerController : MonoBehaviour
         {
             startDash = true;
         }
+        if (UnityEngine.Input.GetKeyUp(KeyCode.X))
+        {
+            startDash = false;
+        }
 
     }
 
     // NEW INPUT SYSTEM
     private void PlayerInput_OnJumpAction(object sender, System.EventArgs e)
     {
-        Debug.Log("PLAYER INPUT -> JUMP");
+        //Debug.Log("PLAYER INPUT -> JUMP");
         if(useNewInputSystem) _lastJumpPressed = Time.time;
     }
 
@@ -164,7 +168,6 @@ public class PlayerController : MonoBehaviour
         {
             _coyoteUsable = true; // Only trigger when first touching
             LandingThisFrame = true;
-            Debug.Log("LANDED!");
         }
 
         _colDown = groundedCheck;
@@ -201,6 +204,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("PickLight"))
+        {
+            LightPickup light = col.gameObject.GetComponent<LightPickup>();
+            if (light.isOn)
+            {
+                light.TryTurnOff();
+                _canDash = true;
+            }
+        }
+    }
+
     private void OnDrawGizmos()
     {
         // Bounds
@@ -230,7 +246,6 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
-
 
     #region Walk
 
@@ -358,7 +373,7 @@ public class PlayerController : MonoBehaviour
 
     #region Dash
     [Header("DASH")] [SerializeField] private float _dashSpeed = 1.0f;
-    [SerializeField] private bool _CanDash = true;
+    [SerializeField] private bool _canDash = false;
     [SerializeField] private AnimationCurve dashCurve;
     [SerializeField] private float dashTotalTime = 0.5f;
     private Vector2 dir = new Vector2(0.0f, 0.0f);
@@ -367,8 +382,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashCooldown = 1.0f;
     private void CalculateDash()
     {
+        //if (!_canDash) return;
 
-        if (startDash && dashTime <= 0.0f)
+        if (_canDash && startDash && dashTime <= 0.0f)
         {
             dir = new Vector2(Input.X, Input.Y);
             //Debug.Log(1 - dashTime / dashTotalTime);
@@ -376,6 +392,7 @@ public class PlayerController : MonoBehaviour
             _currentVerticalSpeed = dir.normalized.y * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             dashTime = dashTotalTime;
             startDash = false;
+            _canDash = false;
         }
         else if(dashTime > 0.0f)
         {
@@ -452,7 +469,6 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("Speed_x", Mathf.Abs(_currentHorizontalSpeed));
         
-
         // Lo mejor aca seria trabajarlo con un Speed_y y hacer las comparaciones directamente en las transiciones del animator
         if(_currentVerticalSpeed > 0){
             animator.SetBool("Jumping", true);

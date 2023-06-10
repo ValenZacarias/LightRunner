@@ -15,7 +15,7 @@ public class WandererGhostBehavior : MonoBehaviour
     private CircleCollider2D collider;
     private SplineAnimate route;
 
-    [SerializeField] private float routeReturnPositionTime;
+    private float routeReturnPositionTime;
     private Vector3 lastRoutePosition;
     private GhostState currentState;
 
@@ -24,8 +24,8 @@ public class WandererGhostBehavior : MonoBehaviour
     [SerializeField] private float returnPossitionOffset = 0.05f;
     private Vector3 targetLightPosition;
     private LightPickup targetLight;
+    private bool canLight = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         collider = GetComponent<CircleCollider2D>();
@@ -34,7 +34,6 @@ public class WandererGhostBehavior : MonoBehaviour
         route.StartOffset = 0.0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(currentState == GhostState.LIGHTUP && targetLightPosition != null)
@@ -51,10 +50,7 @@ public class WandererGhostBehavior : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, lastRoutePosition, chaseSpeed * Time.deltaTime);
             if(transform.position == lastRoutePosition)
             {
-                Debug.Log("BEFORE: " + route.NormalizedTime);
                 route.NormalizedTime = routeReturnPositionTime;
-
-                Debug.Log("AFTER: " + route.NormalizedTime);
                 route.Play();
                 currentState = GhostState.WANDERING;
             }
@@ -73,7 +69,7 @@ public class WandererGhostBehavior : MonoBehaviour
                 routeReturnPositionTime = (route.NormalizedTime + returnPossitionOffset)%1.0f; //Modulo 1 para que si se pase de 1 vuelva a cero
                 lastRoutePosition = route.Container.EvaluatePosition(routeReturnPositionTime);
                 currentState = GhostState.LIGHTUP;
-
+                canLight = true;
                 route.Pause();
             }
         }
@@ -90,10 +86,13 @@ public class WandererGhostBehavior : MonoBehaviour
     }
     IEnumerator TurnOnTimer()
     {
-        //Debug.Log("Starting timer");
         yield return new WaitForSeconds(turningOnDelay);
-        targetLight.TurnOn();
-        currentState = GhostState.RETURNING;
+        if(canLight)
+        {
+            targetLight.TurnOn();
+            currentState = GhostState.RETURNING;
+            canLight = false;
+        }
     }
 
 
