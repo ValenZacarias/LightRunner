@@ -146,7 +146,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798144646942468992}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -159,7 +159,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,8 +202,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0.08627451}
+      key1: {r: 1, g: 1, b: 1, a: 0.08627451}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -227,7 +227,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   useNewInputSystem: 0
   _characterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.85, z: 0.5}
+    m_Extent: {x: 0.5, y: 0.7, z: 0.5}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -309,12 +309,12 @@ MonoBehaviour:
   _fallClamp: -60
   _minFallSpeed: 70
   _maxFallSpeed: 90
-  _jumpHeight: 25
+  _jumpHeight: 20
   _jumpApexThreshold: 10
   _coyoteTimeThreshold: 0.15
   _jumpBuffer: 0.1
   _jumpEndEarlyGravityModifier: 3
-  _dashSpeed: 40
+  _dashSpeed: 50
   _canDash: 0
   dashCurve:
     serializedVersion: 2
