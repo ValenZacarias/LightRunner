@@ -11,7 +11,7 @@ enum GhostState
     STOP
 }
 
-public class WandererGhostBehavior : MonoBehaviour
+public class GhostBehavior : MonoBehaviour
 {
     private CircleCollider2D collider;
     private SplineAnimate route;
@@ -98,6 +98,12 @@ public class WandererGhostBehavior : MonoBehaviour
     {
         currentState = GhostState.STOP;
         route.Pause();
+    }
+
+    public void Reset()
+    {
+        currentState = GhostState.WANDERING;
+        route.Restart(true);
     }
 
     private void OnDrawGizmos()

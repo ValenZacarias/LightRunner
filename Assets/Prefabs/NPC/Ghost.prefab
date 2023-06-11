@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7828367018090929500}
   - component: {fileID: 8150466691940813920}
-  - component: {fileID: 2447032072770568821}
+  - component: {fileID: 2149594828723174258}
   - component: {fileID: 1763887853272432494}
   - component: {fileID: 4761778306941169850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 133519641095831200}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8150466691940813920
 MonoBehaviour:
@@ -50,16 +50,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Target: {fileID: 0}
   m_PlayOnAwake: 1
-  m_LoopMode: 1
+  m_LoopMode: 3
   m_Method: 0
-  m_Duration: 10
-  m_MaxSpeed: 5.4069304
+  m_Duration: 5
+  m_MaxSpeed: 4.2958446
   m_EasingMode: 0
   m_AlignmentMode: 0
-  m_ObjectForwardAxis: 0
-  m_ObjectUpAxis: 2
+  m_ObjectForwardAxis: 2
+  m_ObjectUpAxis: 1
   m_StartOffset: 0
---- !u!114 &2447032072770568821
+--- !u!114 &2149594828723174258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,9 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5077df557ae41d743a06d34979fa5ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  routeReturnPositionTime: 0
   chaseSpeed: 5
-  turningOnDelay: 0.5
+  turningOnDelay: 1
   returnPossitionOffset: 0.1
 --- !u!58 &1763887853272432494
 CircleCollider2D:
@@ -109,7 +108,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.27
+  m_Radius: 3
 --- !u!50 &4761778306941169850
 Rigidbody2D:
   serializedVersion: 4
@@ -147,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 133519641095831200}
   - component: {fileID: 2353484399441073977}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hexagon Flat-Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}

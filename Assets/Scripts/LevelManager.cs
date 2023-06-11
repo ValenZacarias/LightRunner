@@ -77,6 +77,12 @@ public class LevelManager : MonoBehaviour
         {
             light.TurnOn();
         }
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemie in enemies)
+        {
+            Debug.Log("RESTART GHOST");
+            enemie.GetComponent<GhostBehavior>().Reset();
+        }
         HUD.Restart();
     }
 
