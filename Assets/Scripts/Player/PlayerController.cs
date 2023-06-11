@@ -215,6 +215,7 @@ public class PlayerController : MonoBehaviour
             {
                 light.TryTurnOff();
                 _canDash = true;
+                dashAnimTriggered = false;
             }
         }
     }
@@ -381,7 +382,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 dir = new Vector2(0.0f, 0.0f);
     private float dashTime = 0.0f;
     private bool startDash;
-    [SerializeField] private float dashCooldown = 1.0f;
+    public bool isDashing;
+    // [SerializeField] private float dashCooldown = 1.0f;
     private void CalculateDash()
     {
         //if (!_canDash) return;
@@ -395,6 +397,7 @@ public class PlayerController : MonoBehaviour
             dashTime = dashTotalTime;
             startDash = false;
             _canDash = false;
+            isDashing = true;
         }
         else if(dashTime > 0.0f)
         {
@@ -403,6 +406,12 @@ public class PlayerController : MonoBehaviour
             _currentVerticalSpeed = dir.normalized.y * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             dashTime -= Time.deltaTime;
         }
+        else if(dashTime <= 0.0f && isDashing)
+        {
+            dashTime = 0.0f;
+            isDashing = false;
+        }
+
     }
 
     #endregion
@@ -468,6 +477,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public Color dashColor;
+    private bool dashAnimTriggered = false;
     private void UpdateAnimator()
     {
 
@@ -498,6 +508,11 @@ public class PlayerController : MonoBehaviour
         }
 
         spriteRenderer.color = _canDash ? dashColor : Color.white;
+
+        if(isDashing && !dashAnimTriggered){
+            animator.SetTrigger("Dash");
+            dashAnimTriggered = true;
+        }
 
     }
     #endregion
