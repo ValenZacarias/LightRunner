@@ -276,7 +276,7 @@ Transform:
   - {fileID: 2239353243359012284}
   - {fileID: 6906150455019569743}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7371722516376233718
 MonoBehaviour:
@@ -309,12 +309,12 @@ MonoBehaviour:
   _fallClamp: -60
   _minFallSpeed: 70
   _maxFallSpeed: 90
-  _jumpHeight: 20
+  _jumpHeight: 23
   _jumpApexThreshold: 10
   _coyoteTimeThreshold: 0.15
   _jumpBuffer: 0.1
   _jumpEndEarlyGravityModifier: 3
-  _dashSpeed: 50
+  _dashSpeed: 40
   _canDash: 0
   dashCurve:
     serializedVersion: 2
@@ -349,7 +349,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dashTotalTime: 0.2
+  dashTotalTime: 0.25
   isDashing: 0
   _freeColliderIterations: 1
   animator: {fileID: 7766201276963251518}
@@ -454,7 +454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8240430168566557964}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 1
   m_Children:
