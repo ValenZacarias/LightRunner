@@ -12,6 +12,11 @@ public class LevelManager : MonoBehaviour
     private int totalPickLights;
     private int unlitPickLights = 0;
 
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -27,11 +32,19 @@ public class LevelManager : MonoBehaviour
         totalPickLights = PickLightsGO.Length;
 
         UpdateHUD();
+
+        Player.GetComponent<PlayerController>().OnDamageAction += PlayerController_OnDamageAction;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) RestartLevel();
+    }
+
+
+    private void PlayerController_OnDamageAction(object sender, System.EventArgs e)
+    {
+        RestartLevel();
     }
 
     public int GetLitPickLights()
@@ -85,6 +98,7 @@ public class LevelManager : MonoBehaviour
         }
         HUD.Restart();
     }
+
 
     #region UI
     public HUDController HUD;

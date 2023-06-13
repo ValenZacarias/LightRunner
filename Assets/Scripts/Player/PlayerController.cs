@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -147,6 +148,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _detectionRayLength = 0.1f;
     [SerializeField] [Range(0.1f, 0.3f)] private float _rayBuffer = 0.1f; // Prevents side detectors hitting the ground
 
+    [SerializeField] private LayerMask _damageLayer;
+
     private RayRange _raysUp, _raysRight, _raysDown, _raysLeft;
     private bool _colUp, _colRight, _colDown, _colLeft;
 
@@ -206,8 +209,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public event EventHandler OnDamageAction;
+
     private void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log(col.gameObject);
         if (col.CompareTag("PickLight"))
         {
             LightPickup light = col.gameObject.GetComponent<LightPickup>();
@@ -217,6 +223,12 @@ public class PlayerController : MonoBehaviour
                 _canDash = true;
                 dashAnimTriggered = false;
             }
+        }
+
+        if (_damageLayer == (_damageLayer | (1 << col.gameObject.layer))) // si el objeto pertenece a la layermask de damage
+        {
+            Debug.Log("DEAD");
+            OnDamageAction?.Invoke(this, EventArgs.Empty);
         }
     }
 
