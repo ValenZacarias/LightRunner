@@ -232,6 +232,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collider2D col)
+    {
+        // para los damage enemy
+        if (_damageLayer == (_damageLayer | (1 << col.gameObject.layer))) // si el objeto pertenece a la layermask de damage
+        {
+            Debug.Log("DEAD");
+            OnDamageAction?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         // Bounds
