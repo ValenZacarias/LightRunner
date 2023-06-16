@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8337165388264883766}
-  - component: {fileID: 6459310483368353527}
+  - component: {fileID: 5448579800907724198}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6459310483368353527
+--- !u!114 &5448579800907724198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,5 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a44abb8c4491849941c9ea2b64fd78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerStart: {fileID: 0}
-  HUD: {fileID: 4427085191711942109, guid: 3e3fa6d7afe05cb43b11d89403982234, type: 3}
+  cam: {fileID: 0}
+  PickLights: []
+  camWorldWidht: 0
+  camWorldHeight: 0
+  Rooms: []
+  currentRoom: 0
+  levelRooms: []
+  HUD: {fileID: 0}

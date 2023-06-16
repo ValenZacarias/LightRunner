@@ -11,7 +11,7 @@ enum SweeperGhostState
     STOP
 }
 
-public class SweeperGhostBehavior : MonoBehaviour
+public class SweeperGhostBehavior : MonoBehaviour, IEnemyBehavior
 {
     private CircleCollider2D collider;
     private SplineAnimate route;

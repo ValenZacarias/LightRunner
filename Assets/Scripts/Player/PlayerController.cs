@@ -232,8 +232,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
+        Debug.Log(col);
         // para los damage enemy
         if (_damageLayer == (_damageLayer | (1 << col.gameObject.layer))) // si el objeto pertenece a la layermask de damage
         {

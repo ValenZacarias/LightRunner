@@ -11,7 +11,7 @@ enum GhostState
     STOP
 }
 
-public class GhostBehavior : MonoBehaviour
+public class GhostBehavior : MonoBehaviour, IEnemyBehavior
 {
     private CircleCollider2D collider;
     private SplineAnimate route;

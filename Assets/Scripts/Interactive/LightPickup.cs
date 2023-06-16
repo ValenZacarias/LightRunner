@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class LightPickup : MonoBehaviour
@@ -15,8 +16,8 @@ public class LightPickup : MonoBehaviour
     public bool useTimer = false;
     public event Action TurnedOff;
     public event Action TurnedOn;
+    //[SerializeField] private int roomNumber;
 
-    
     private void Start()
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -69,8 +70,12 @@ public class LightPickup : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-
-        if(!isOn)
+        //GUIStyle style = new GUIStyle();
+        //style.contentOffset = Vector2.right * 15.0f;
+        //style.normal.textColor = Color.magenta;
+        //style.fontSize = 15;
+        //Handles.Label(transform.position, roomNumber.ToString(), style);
+        if (!isOn)
         {
             Gizmos.color = Color.gray;
             Gizmos.DrawSphere(transform.position, 0.5f);

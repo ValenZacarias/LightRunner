@@ -276,7 +276,7 @@ Transform:
   - {fileID: 2239353243359012284}
   - {fileID: 6906150455019569743}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7371722516376233718
 MonoBehaviour:
@@ -300,11 +300,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _detectorCount: 4
-  _detectionRayLength: 0.17
+  _detectionRayLength: 0.2
   _rayBuffer: 0.1
   _damageLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   _acceleration: 100
   _moveClamp: 13
   _deAcceleration: 80
