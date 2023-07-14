@@ -425,6 +425,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5448579800907724198, guid: 400cb03df8f55d54489aac6898fd447c, type: 3}
+      propertyPath: HUD
+      value: 
+      objectReference: {fileID: 679736779}
+    - target: {fileID: 5448579800907724198, guid: 400cb03df8f55d54489aac6898fd447c, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1786241405}
+    - target: {fileID: 5448579800907724198, guid: 400cb03df8f55d54489aac6898fd447c, type: 3}
+      propertyPath: Rooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448579800907724198, guid: 400cb03df8f55d54489aac6898fd447c, type: 3}
+      propertyPath: Rooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 93716563}
     - target: {fileID: 6459310483368353527, guid: 400cb03df8f55d54489aac6898fd447c, type: 3}
       propertyPath: HUD
       value: 
