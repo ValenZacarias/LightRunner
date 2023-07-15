@@ -13,7 +13,7 @@ enum GhostState
 
 public class GhostBehavior : MonoBehaviour, IEnemyBehavior
 {
-    private CircleCollider2D collider;
+    
     private SplineAnimate route;
 
     private float routeReturnPositionTime;
@@ -30,7 +30,6 @@ public class GhostBehavior : MonoBehaviour, IEnemyBehavior
 
     void Start()
     {
-        collider = GetComponent<CircleCollider2D>();
         route = GetComponent<SplineAnimate>();
         currentState = GhostState.WANDERING;
         route.StartOffset = 0.0f;

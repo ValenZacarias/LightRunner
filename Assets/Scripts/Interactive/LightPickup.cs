@@ -22,7 +22,7 @@ public class LightPickup : MonoBehaviour
     {
         sprite = GetComponentInChildren<SpriteRenderer>();
         //ps = GetComponentInChildren<ParticleSystem>();
-        sprite.material.SetFloat("_TimeOffset", UnityEngine.Random.RandomRange(0.0f, 10.0f));
+        sprite.material.SetFloat("_TimeOffset", UnityEngine.Random.Range(0.0f, 10.0f));
         //ps.Play();
     }
 

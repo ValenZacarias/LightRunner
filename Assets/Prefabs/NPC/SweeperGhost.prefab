@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7828367018090929500}
-  - component: {fileID: 8150466691940813920}
   - component: {fileID: 733312048072306764}
   - component: {fileID: 1763887853272432494}
   - component: {fileID: 4761778306941169850}
@@ -36,29 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8150466691940813920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934741232166097971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_LoopMode: 1
-  m_Method: 0
-  m_Duration: 2
-  m_MaxSpeed: 21.500431
-  m_EasingMode: 0
-  m_AlignmentMode: 0
-  m_ObjectForwardAxis: 2
-  m_ObjectUpAxis: 1
-  m_StartOffset: 0
 --- !u!114 &733312048072306764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +49,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turningOnDelay: 0.1
   canLight: 1
+  routeSpline: {fileID: 0}
+  closedSpline: 0
+  newPos:
+    x: 0
+    y: 0
+    z: 0
+  newTang:
+    x: 0
+    y: 0
+    z: 0
+  newUp:
+    x: 0
+    y: 0
+    z: 0
+  alpha: 0
+  closedAlpha: 0
+  normalizedTime: 0
+  dir: 1
+  offset: 0.2
+  moveSpeed: 0.2
+  speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!58 &1763887853272432494
 CircleCollider2D:
   m_ObjectHideFlags: 0

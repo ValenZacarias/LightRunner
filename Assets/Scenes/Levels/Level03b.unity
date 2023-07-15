@@ -2230,6 +2230,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8186935527896028706}
     m_Modifications:
+    - target: {fileID: 733312048072306764, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
+      propertyPath: routeSpline
+      value: 
+      objectReference: {fileID: 1518607453}
+    - target: {fileID: 733312048072306764, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
+      propertyPath: closedSpline
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 934741232166097971, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
       propertyPath: m_Name
       value: SweeperGhost

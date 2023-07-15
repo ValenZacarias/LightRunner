@@ -1760,6 +1760,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SweeperGhostDamage
       objectReference: {fileID: 0}
+    - target: {fileID: 4610339509831818828, guid: 3d2c5bb965674554d9391d5c34b88f46, type: 3}
+      propertyPath: routeSpline
+      value: 
+      objectReference: {fileID: 606596936}
     - target: {fileID: 4956860592908231264, guid: 3d2c5bb965674554d9391d5c34b88f46, type: 3}
       propertyPath: m_Target
       value: 

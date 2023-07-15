@@ -270,6 +270,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8674518189488196487}
     m_Modifications:
+    - target: {fileID: 733312048072306764, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
+      propertyPath: routeSpline
+      value: 
+      objectReference: {fileID: 606596936}
+    - target: {fileID: 733312048072306764, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
+      propertyPath: closedSpline
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 934741232166097971, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
       propertyPath: m_Name
       value: SweeperGhost
@@ -317,18 +325,6 @@ PrefabInstance:
     - target: {fileID: 7828367018090929500, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8150466691940813920, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
-      propertyPath: m_Target
-      value: 
-      objectReference: {fileID: 606596936}
-    - target: {fileID: 8150466691940813920, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
-      propertyPath: m_Duration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8150466691940813920, guid: adccee0e82d6beb4a993650c6c202aa6, type: 3}
-      propertyPath: m_MaxSpeed
-      value: 2.8454914
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

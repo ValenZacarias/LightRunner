@@ -13,6 +13,7 @@ enum SweeperGhostState
     STOP
 }
 
+#if(false)
 public class SweeperBehaviorBackup : MonoBehaviour, IEnemyBehavior
 {
     private CircleCollider2D collider;
@@ -390,4 +391,4 @@ public class SweeperBehaviorBackup : MonoBehaviour, IEnemyBehavior
         }
     }
 }
-
+#endif
