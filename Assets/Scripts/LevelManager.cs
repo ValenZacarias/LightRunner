@@ -23,20 +23,22 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Rooms.Length == 0) Debug.LogError("[LevelManager] ROOM LIST IS EMPTY");
-        if (cam == null) Debug.LogError("[LevelManager] NO CAM SETTED UP");
-        for (int i = 0; i < Rooms.Length; i++) 
-        { 
-            Rooms[i].LightsStateChange += RoomManager_LightsStateChange;
-            Rooms[i].RoomFinished += RoomManager_RoomFinished;
-        }
-
-        if (HUD == null) Debug.LogError("[LevelManager] NO HUD SETTED UP");
+        
     }
 
     private void Start()
     {
         // EVENT LISTENERS SETUP
+        if (Rooms.Length == 0) Debug.LogError("[LevelManager] ROOM LIST IS EMPTY");
+        if (cam == null) Debug.LogError("[LevelManager] NO CAM SETTED UP");
+        for (int i = 0; i < Rooms.Length; i++)
+        {
+            Rooms[i].OnLightsStateChange += RoomManager_OnLightsStateChange;
+            Rooms[i].OnRoomFinished += RoomManager_OnRoomFinished;
+        }
+
+        if (HUD == null) Debug.LogError("[LevelManager] NO HUD SETTED UP");
+
         Player = GameObject.FindGameObjectWithTag("Player");
         Player.GetComponent<PlayerController>().OnDamageAction += PlayerController_OnDamageAction;
 
@@ -61,7 +63,7 @@ public class LevelManager : MonoBehaviour
         RestartRoom();
     }
 
-    private void RoomManager_LightsStateChange()
+    private void RoomManager_OnLightsStateChange()
     {
         if (currentRoom == Rooms.Length && currentRoomTotalLights == currentRoomUnlitLights)
         {
@@ -77,7 +79,7 @@ public class LevelManager : MonoBehaviour
         //WIN
     }
 
-    private void RoomManager_RoomFinished()
+    private void RoomManager_OnRoomFinished()
     {
         currentRoom += 1;
         if (currentRoom == Rooms.Length) 
@@ -114,6 +116,8 @@ public class LevelManager : MonoBehaviour
 
         UpdateHUD();
         HUD.Restart();
+
+        Player.GetComponent<PlayerController>().ResetDash();
     }
 
     private void RestartRoom()
@@ -124,6 +128,7 @@ public class LevelManager : MonoBehaviour
 
         UpdateHUD();
         HUD.Restart();
+        Player.GetComponent<PlayerController>().ResetDash();
     }
 
 

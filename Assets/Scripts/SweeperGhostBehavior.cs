@@ -78,8 +78,6 @@ public class SweeperGhostBehavior : MonoBehaviour, IEnemyBehavior
         }
         if (col.CompareTag("Blocker"))
         {
-            Debug.Log("BLOCKER");
-
             dir *= -1;
         }
     }

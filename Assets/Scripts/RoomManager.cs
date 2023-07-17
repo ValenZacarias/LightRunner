@@ -8,11 +8,13 @@ public class RoomManager : MonoBehaviour
     //[SerializeField] private List<LightPickup> PickLights = new List<LightPickup>();
     [Header("LIGHTS")]
     [SerializeField] private LightPickup[] RoomPickLights;
+    [SerializeField] private BlockSwitchBehavior[] RoomBlockSwitches;
+    [SerializeField] private BlockerBehavior[] RoomBlockers;
     public Transform PlayerStart;
     private int totalPickLights;
     private int unlitPickLights = 0;
-    public event Action LightsStateChange;
-    public event Action RoomFinished;
+    public event Action OnLightsStateChange;
+    public event Action OnRoomFinished;
 
     [Header("DOOR")]
     public DoorBehavior Door;
@@ -43,6 +45,10 @@ public class RoomManager : MonoBehaviour
             totalPickLights = RoomPickLights.Length;
         }
 
+        //BLOCKERS
+        RoomBlockers = this.GetComponentsInChildren<BlockerBehavior>();
+        RoomBlockSwitches = this.GetComponentsInChildren<BlockSwitchBehavior>();
+
         // ENEMIES
         Enemies = this.GetComponentsInChildren<IEnemyBehavior>();
 
@@ -62,13 +68,13 @@ public class RoomManager : MonoBehaviour
     private void OnPickLightTurnedOff()
     {
         ++unlitPickLights;
-        LightsStateChange?.Invoke();
+        OnLightsStateChange?.Invoke();
         //if(totalPickLights == unlitPickLights) FinishRoom();
     }
     private void OnPickLightTurnedOn()
     {
         if(unlitPickLights != 0) --unlitPickLights;
-        LightsStateChange?.Invoke();
+        OnLightsStateChange?.Invoke();
     }
 
     public int GetTotalLights() { return totalPickLights; }
@@ -81,8 +87,18 @@ public class RoomManager : MonoBehaviour
         {
             light.TurnOn();
         }
+
+        foreach (BlockerBehavior blocker in RoomBlockers)
+        {
+            blocker.Reset();
+        }
+
+        foreach (BlockSwitchBehavior blockerSwitch in RoomBlockSwitches)
+        {
+            blockerSwitch.Reset();
+        }
         //var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        for(int i = 0; i < Enemies.Length; i++)
+        for (int i = 0; i < Enemies.Length; i++)
         {
             Debug.Log("RESTART GHOST");
             Enemies[i].Reset();
@@ -91,7 +107,7 @@ public class RoomManager : MonoBehaviour
 
     private void FinishRoom()
     {
-        RoomFinished?.Invoke();
+        OnRoomFinished?.Invoke();
         for (int i = 0; i < Enemies.Length; i++)
         {
             Debug.Log("STOP GHOST");

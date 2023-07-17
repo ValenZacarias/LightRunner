@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.gameObject);
+        //Debug.Log(col.gameObject);
         if (col.CompareTag("PickLight"))
         {
             LightPickup light = col.gameObject.GetComponent<LightPickup>();
@@ -409,12 +409,12 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] private float dashCooldown = 1.0f;
     private void CalculateDash()
     {
-        //if (!_canDash) return;
-
         if (_canDash && startDash && dashTime <= 0.0f)
         {
             dir = new Vector2(Input.X, Input.Y);
-            //Debug.Log(1 - dashTime / dashTotalTime);
+            // hacer que dashee a algun lado cuando no se esta moviendo. Si estamos en el aire que vaya para arriba, si estamos en el suelo, para donde este mirando el vampi.
+            // para lo del suelo hay que tener un vector de facing aca en el controller
+            //if (dir.magnitude == 0.0f) dir = JumpingThisFrame ? new Vector2(0.0f, 1.0f) : new Vector2(1.0f, 0.0f); 
             _currentHorizontalSpeed = dir.normalized.x * _dashSpeed * dashCurve.Evaluate( 1 - dashTime / dashTotalTime) ;
             _currentVerticalSpeed = dir.normalized.y * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             dashTime = dashTotalTime;
@@ -424,7 +424,6 @@ public class PlayerController : MonoBehaviour
         }
         else if(dashTime > 0.0f)
         {
-            //Debug.Log(1 - dashTime / dashTotalTime);
             _currentHorizontalSpeed = dir.normalized.x * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             _currentVerticalSpeed = dir.normalized.y * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             dashTime -= Time.deltaTime;
@@ -435,6 +434,11 @@ public class PlayerController : MonoBehaviour
             isDashing = false;
         }
 
+    }
+
+    public void ResetDash()
+    {
+        _canDash = false;
     }
 
     #endregion
