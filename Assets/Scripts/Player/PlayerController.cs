@@ -503,6 +503,7 @@ public class PlayerController : MonoBehaviour
     [Header("ANIMATION")]
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteDash;
     public Color dashColor;
     private bool dashAnimTriggered = false;
     private void UpdateAnimator()
@@ -534,7 +535,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsGrounded", false);
         }
 
-        spriteRenderer.color = _canDash ? dashColor : Color.white;
+        // spriteRenderer.color = _canDash ? dashColor : Color.white;
+        spriteDash.enabled = _canDash;
 
         if(isDashing && !dashAnimTriggered){
             animator.SetTrigger("Dash");
