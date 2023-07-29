@@ -352,6 +352,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3700bfe90eb6b469fd3c6c75596904, type: 3}
+--- !u!114 &1388659197 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8177209123891344931, guid: 79406d3da863a4e458e3d27696c74aff, type: 3}
+  m_PrefabInstance: {fileID: 9058081823577519323}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1443736525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -959,6 +970,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427513743096630330, guid: 79406d3da863a4e458e3d27696c74aff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025407764252950136, guid: 79406d3da863a4e458e3d27696c74aff, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8025407764252950136, guid: 79406d3da863a4e458e3d27696c74aff, type: 3}
+      propertyPath: routeSpline
+      value: 
+      objectReference: {fileID: 1388659197}
+    - target: {fileID: 8025407764252950136, guid: 79406d3da863a4e458e3d27696c74aff, type: 3}
+      propertyPath: closedSpline
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
