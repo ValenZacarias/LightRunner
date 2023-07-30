@@ -37,7 +37,7 @@ Transform:
   - {fileID: 707404791396553576}
   - {fileID: 4418904575679235920}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2139422880345361643
 MonoBehaviour:
@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomPickLights: []
+  RoomBlockSwitches: []
+  RoomBlockers: []
   PlayerStart: {fileID: 3079411745776278189}
   Door: {fileID: 4382428307343524721}
 --- !u!1 &1688524031287041873
@@ -129,7 +131,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7019608, g: 0.48627454, b: 0.34509805, a: 1}
+  m_Color: {r: 0.19607843, g: 0.16470589, b: 0.20392157, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -637,7 +639,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7075472, g: 0.48557606, b: 0.34376115, a: 1}
+  m_Color: {r: 0.19607843, g: 0.16470589, b: 0.20392157, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -767,7 +769,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7019608, g: 0.48627454, b: 0.34509805, a: 1}
+  m_Color: {r: 0.19607843, g: 0.16470589, b: 0.20392157, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -897,7 +899,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7075472, g: 0.48557606, b: 0.34376115, a: 1}
+  m_Color: {r: 0.19607843, g: 0.16470589, b: 0.20392157, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1027,7 +1029,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7019608, g: 0.48627454, b: 0.34509805, a: 1}
+  m_Color: {r: 0.19607843, g: 0.16470589, b: 0.20392157, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1206,6 +1208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SweeperGhostDamage
       objectReference: {fileID: 0}
+    - target: {fileID: 4610339509831818828, guid: 3d2c5bb965674554d9391d5c34b88f46, type: 3}
+      propertyPath: routeSpline
+      value: 
+      objectReference: {fileID: 8177209123891344931}
     - target: {fileID: 4956860592908231264, guid: 3d2c5bb965674554d9391d5c34b88f46, type: 3}
       propertyPath: m_Target
       value: 

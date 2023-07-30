@@ -29,7 +29,7 @@ public class SweeperGhostBehavior : MonoBehaviour, IEnemyBehavior
     {
         if (routeSpline == null) Debug.LogError(transform.name + " SPLINE MISSING");
 
-        alpha += offset;
+        alpha += offset + 0.05f;
         routeSpline.Evaluate(offset, out offsetPos, out offsetTang, out offsetUp);
         transform.position = (Vector3)offsetPos;
     }
@@ -47,7 +47,7 @@ public class SweeperGhostBehavior : MonoBehaviour, IEnemyBehavior
         }
         else
         {
-            if (Mathf.Abs(0.0f - alpha) < 0.005f || Mathf.Abs(alpha - 1.0f) < 0.005)
+            if (Mathf.Abs(0.0f - alpha) < 0.01f || Mathf.Abs(alpha - 1.0f) < 0.01)
             {
                 dir *= -1.0f;
             }
