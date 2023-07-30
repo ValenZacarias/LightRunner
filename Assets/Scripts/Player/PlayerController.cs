@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private int _detectorCount = 3;
     [SerializeField] private float _detectionRayLength = 0.1f;
-    [SerializeField] [Range(0.1f, 0.3f)] private float _rayBuffer = 0.1f; // Prevents side detectors hitting the ground
+    [SerializeField] [Range(-1.0f, 1.0f)] private float _rayBuffer = 0.1f; // Prevents side detectors hitting the ground
 
     [SerializeField] private LayerMask _damageLayer;
 
@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireCube(transform.position + _characterBounds.center, _characterBounds.size);
 
         // Rays
-        if (!Application.isPlaying)
+        if (Application.isPlaying)
         {
             CalculateRayRanged();
             Gizmos.color = Color.blue;
@@ -406,15 +406,21 @@ public class PlayerController : MonoBehaviour
     private float dashTime = 0.0f;
     private bool startDash;
     public bool isDashing;
+
+    private bool tryDash;
+    [SerializeField] private float tryDashWindow = 0.3f;
     // [SerializeField] private float dashCooldown = 1.0f;
     private void CalculateDash()
     {
         if (_canDash && startDash && dashTime <= 0.0f)
         {
             dir = new Vector2(Input.X, Input.Y);
+            if (dir.magnitude == 0.0f) { return; }
+            
             // hacer que dashee a algun lado cuando no se esta moviendo. Si estamos en el aire que vaya para arriba, si estamos en el suelo, para donde este mirando el vampi.
             // para lo del suelo hay que tener un vector de facing aca en el controller
             //if (dir.magnitude == 0.0f) dir = JumpingThisFrame ? new Vector2(0.0f, 1.0f) : new Vector2(1.0f, 0.0f); 
+            
             _currentHorizontalSpeed = dir.normalized.x * _dashSpeed * dashCurve.Evaluate( 1 - dashTime / dashTotalTime) ;
             _currentVerticalSpeed = dir.normalized.y * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             dashTime = dashTotalTime;

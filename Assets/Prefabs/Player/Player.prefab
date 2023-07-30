@@ -339,7 +339,7 @@ Transform:
   - {fileID: 2239353243359012284}
   - {fileID: 6906150455019569743}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7371722516376233718
 MonoBehaviour:
@@ -362,9 +362,9 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  _detectorCount: 4
-  _detectionRayLength: 0.2
-  _rayBuffer: 0.1
+  _detectorCount: 8
+  _detectionRayLength: 0.15
+  _rayBuffer: -0.05
   _damageLayer:
     serializedVersion: 2
     m_Bits: 384
@@ -417,6 +417,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   dashTotalTime: 0.25
   isDashing: 0
+  tryDashWindow: 0.2
   _freeColliderIterations: 1
   animator: {fileID: 4473896506404384601}
   spriteRenderer: {fileID: 4519094998935164133}
