@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using IngameDebugConsole;
 
 
 public class LevelManager : MonoBehaviour
@@ -28,6 +29,9 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        //DebugLogConsole.AddCommand("rl", "Restart Level", RestartLevel);
+        //DebugLogConsole.AddCommand<int>("rr", "Restart Room", RestartRoom);
+
         // EVENT LISTENERS SETUP
         if (Rooms.Length == 0) Debug.LogError("[LevelManager] ROOM LIST IS EMPTY");
         if (cam == null) Debug.LogError("[LevelManager] NO CAM SETTED UP");
@@ -52,15 +56,15 @@ public class LevelManager : MonoBehaviour
         camWorldHeight = 2 * cam.orthographicSize;
         camWorldWidht = camWorldHeight * Camera.main.aspect;
 
-        if (Input.GetKeyDown(KeyCode.R)) RestartLevel();
-        if (Input.GetKeyDown(KeyCode.T)) RestartRoom();
+        if (Input.GetKeyDown(KeyCode.R)) RestartRoom(currentRoom); 
+
     }
 
 
     private void PlayerController_OnDamageAction(object sender, System.EventArgs e)
     {
         Debug.Log("[LeveLManager] DeadTRIGGER");
-        RestartRoom();
+        RestartRoom(currentRoom);
     }
 
     private void RoomManager_OnLightsStateChange()
@@ -96,8 +100,10 @@ public class LevelManager : MonoBehaviour
     {
         currentRoomTotalLights = Rooms[currentRoom].GetTotalLights();
         currentRoomUnlitLights = Rooms[currentRoom].GetUnlitLights();
-        cam.transform.position = new Vector3(currentRoom * Mathf.FloorToInt(camWorldWidht), cam.transform.position.y, cam.transform.position.z);
+        cam.transform.position = new Vector3(currentRoom * camWorldWidht, cam.transform.position.y, cam.transform.position.z);
         UpdateHUD();
+        HUD.Restart();
+        Rooms[currentRoom].ResetBlockers();
     }
 
     private void FinishLevel()
@@ -120,11 +126,18 @@ public class LevelManager : MonoBehaviour
         Player.GetComponent<PlayerController>().ResetDash();
     }
 
-    private void RestartRoom()
+    private void RestartRoom(int roomNumber)
     {
-        Rooms[currentRoom].ResetRoom();
-        Player.transform.position = Rooms[currentRoom].PlayerStart.position;
-        InitRoom(currentRoom);
+        if(roomNumber >= Rooms.Length)
+        {
+            Debug.LogWarning("Room " + roomNumber + "do not exist");
+            return;
+        }
+        Rooms[roomNumber].ResetRoom();
+        Player.transform.position = Rooms[roomNumber].PlayerStart.position;
+        InitRoom(roomNumber);
+        currentRoom = roomNumber;
+        cam.transform.position = new Vector3(currentRoom * camWorldWidht, cam.transform.position.y, cam.transform.position.z);
 
         UpdateHUD();
         HUD.Restart();

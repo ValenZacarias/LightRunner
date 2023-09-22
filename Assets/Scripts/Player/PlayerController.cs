@@ -406,16 +406,20 @@ public class PlayerController : MonoBehaviour
     private float dashTime = 0.0f;
     private bool startDash;
     public bool isDashing;
+    public GameObject DashIndicator;
 
     private bool tryDash;
     [SerializeField] private float tryDashWindow = 0.3f;
     // [SerializeField] private float dashCooldown = 1.0f;
     private void CalculateDash()
     {
+        DashIndicator.SetActive(_canDash || isDashing);
+
         if (_canDash && startDash && dashTime <= 0.0f)
         {
-            dir = new Vector2(Input.X, Input.Y);
+            dir = new Vector2(Input.X, Input.Y).normalized;
             if (dir.magnitude == 0.0f) { return; }
+            //Debug.Log("DASH START - vec:" + dir + " - mag:" + dir.magnitude);
             
             // hacer que dashee a algun lado cuando no se esta moviendo. Si estamos en el aire que vaya para arriba, si estamos en el suelo, para donde este mirando el vampi.
             // para lo del suelo hay que tener un vector de facing aca en el controller
@@ -427,9 +431,12 @@ public class PlayerController : MonoBehaviour
             startDash = false;
             _canDash = false;
             isDashing = true;
+            DashIndicator.SetActive(false);
         }
         else if(dashTime > 0.0f)
         {
+            //Debug.Log("DASHING - vec:" + dir + " - mag:" + dir.magnitude);
+            dir = new Vector2(Input.X, Input.Y).normalized;
             _currentHorizontalSpeed = dir.normalized.x * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             _currentVerticalSpeed = dir.normalized.y * _dashSpeed * dashCurve.Evaluate(1 - dashTime / dashTotalTime);
             dashTime -= Time.deltaTime;
@@ -444,6 +451,7 @@ public class PlayerController : MonoBehaviour
 
     public void ResetDash()
     {
+        
         _canDash = false;
     }
 
@@ -454,6 +462,7 @@ public class PlayerController : MonoBehaviour
     [Header("MOVE")]
     [SerializeField, Tooltip("Raising this value increases collision accuracy at the cost of performance.")]
     private int _freeColliderIterations = 10;
+    [SerializeField] private float _CharSizeScale = 1.0f;
     // We cast our bounds before moving to avoid future collisions
     private void MoveCharacter()
     {
@@ -482,7 +491,7 @@ public class PlayerController : MonoBehaviour
             var t = (float)i / _freeColliderIterations;
             var posToTry = Vector2.Lerp(pos, furthestPoint, t);
 
-            if (Physics2D.OverlapBox(posToTry, _characterBounds.size, 0, _groundLayer))
+            if (Physics2D.OverlapBox(posToTry, _characterBounds.size * _CharSizeScale, 0, _groundLayer))
             {
                 transform.position = positionToMoveTo;
                 dashTime *= 0.0f;

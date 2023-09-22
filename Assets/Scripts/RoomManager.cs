@@ -70,15 +70,33 @@ public class RoomManager : MonoBehaviour
         ++unlitPickLights;
         OnLightsStateChange?.Invoke();
         //if(totalPickLights == unlitPickLights) FinishRoom();
+       
+        if (totalPickLights == unlitPickLights)
+        {
+            Door.EnableOpen();
+        }
     }
     private void OnPickLightTurnedOn()
     {
         if(unlitPickLights != 0) --unlitPickLights;
         OnLightsStateChange?.Invoke();
+        Door.DisableOpen();
     }
 
     public int GetTotalLights() { return totalPickLights; }
     public int GetUnlitLights() { return unlitPickLights; }
+
+    public void ResetBlockers()
+    {
+        for (int i = 0; i < RoomBlockers.Length; i++)
+        {
+            RoomBlockers[i].Reset();
+        }
+        for (int i = 0; i < RoomBlockSwitches.Length; i++)
+        {
+            RoomBlockSwitches[i].Reset();
+        }
+    }
 
     public void ResetRoom()
     {

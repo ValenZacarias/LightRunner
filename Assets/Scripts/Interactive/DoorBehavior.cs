@@ -7,10 +7,11 @@ public class DoorBehavior : MonoBehaviour
 {
     public event Action PlayerTrigger;
     private bool isOpen = false;
+    private SpriteRenderer doorSprite;
 
     void Start()
     {
-        
+        doorSprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -25,6 +26,18 @@ public class DoorBehavior : MonoBehaviour
         {
             PlayerTrigger?.Invoke();
         }
+    }
+
+    public void EnableOpen()
+    {
+        doorSprite.color = Color.green;
+        Debug.Log("DOOR ENABLE OPEN");
+    }
+
+    public void DisableOpen()
+    {
+        doorSprite.color = Color.gray;
+        Debug.Log("DOOR DISABLE OPEN");
     }
 
     public void Open()

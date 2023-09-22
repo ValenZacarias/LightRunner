@@ -12,8 +12,9 @@ public class SweeperGhostBehavior : MonoBehaviour, IEnemyBehavior
     [SerializeField] private float turningOnDelay = 3.0f;
     [SerializeField] private bool canLight = false;
     private LightPickup targetLight;
-    
+
     [Header("MOVEMENT")]
+    [SerializeField] private bool canMove = true;
     [SerializeField] private SplineContainer routeSpline;
     [SerializeField] private bool closedSpline = false;
     [SerializeField] [Range(0.0f, 1.0f)] private float offset = 0.0f;
@@ -36,7 +37,8 @@ public class SweeperGhostBehavior : MonoBehaviour, IEnemyBehavior
 
     private void HandleSplineMovement()
     {
-       
+        if (!canMove) return;
+
         alpha += Time.deltaTime * moveSpeed * dir;
 
         if(closedSpline)
@@ -91,12 +93,14 @@ public class SweeperGhostBehavior : MonoBehaviour, IEnemyBehavior
 
     public void Stop()
     {
+        canMove = false;
         //currentState = SweeperGhostState.STOP;
         //route.Pause();
     }
 
     public void Reset()
     {
+        canMove = true;
         //currentState = SweeperGhostState.WANDERING;
         //route.Restart(true);
     }

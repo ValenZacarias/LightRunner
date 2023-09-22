@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4338199235463980664}
   - component: {fileID: 7497461216192185116}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: OnSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3615546910630480781}
   - component: {fileID: 3672278044144390703}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: OffSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 176289262139731939}
   - component: {fileID: 1166385543221816942}
   - component: {fileID: 2406083364670141864}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Blocker
   m_TagString: Blocker
   m_Icon: {fileID: 0}
